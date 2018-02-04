@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Budget.js",
+  "version": "0.0",
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+       "default_popup": "popup.html"
+   },
+  "permissions": ["tabs", "storage","webNavigation"],
+  "content_scripts": [{
+    "matches": ["*://*.amazon.com/"],
+    "js": ["./lib/jquery-2.2.0.js", "content.js"]
+   }]
+}
