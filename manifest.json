@@ -9,9 +9,10 @@
   "browser_action": {
        "default_popup": "popup.html"
    },
-  "permissions": ["tabs", "storage","webNavigation"],
+  "permissions": ["contextMenus", "tabs", "storage","webNavigation"],
   "content_scripts": [{
-    "matches": ["*://*.amazon.com/"],
-    "js": ["./lib/jquery-2.2.0.js", "content.js"]
+    "matches": ["*://*.amazon.com/*"],
+    "js": ["./lib/jquery-2.2.0.js", "content.js"],
+    "run_at": "document_end"
    }]
 }
