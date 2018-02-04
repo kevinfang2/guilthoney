@@ -47,7 +47,7 @@ function createDiv(real_cost, balance, color, right, top, text){
     div.style.top = top;
     div.style.right = right;
     div.style.width = '20%';
-    div.style.height = '15%';
+    div.style.height = '25%';
 
     div.style.backgroundColor = '#fff';
     div.style.border = "3px solid"
@@ -60,16 +60,10 @@ function createDiv(real_cost, balance, color, right, top, text){
     span.style.width = "70%"
     span.style.color = "#333"
     span.style.fontSize = '16px'
-    span.style.height = "10%"
+    span.style.height = "100%"
     span.style.margin = '0 auto'
     span.style.display = "inline-block"
     //set attributes for div
-
-    var buyBackground = document.getElementById("submit.buy-now")
-
-    removeClassName(buyBackground, "a-button-oneclick")
-    buyBackground.style.backgroundColor = "#aaa"
-
   }
 }
 
@@ -116,7 +110,15 @@ chrome.storage.sync.get("balance", function(callback) {
   console.log(balance)
   var remaining_balance = (balance-real_cost).toString().substring(0,5)
   var productTitle = document.getElementById("productTitle").innerHTML
+
+  var buyBackground = document.getElementById("submit.buy-now")
+  removeClassName(buyBackground, "a-button-oneclick")
+  buyBackground.style.backgroundColor = "#aaa"
+
+  var buyButton = document.getElementById("submit.buy-now-announce")
+  buyButton.innerHTML = "do u rly wanna tho"
+
   createImage(real_cost, balance,'#6AF5FF', '30%', '40%', "https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/1/11/Chibi_rem_by_nyphi-dae3j6n.png/revision/latest?cb=20170107005945")
-  createDiv(real_cost, balance,'#E5D300', '20%', '80%', "Your balance will only be <b>$" + remaining_balance + "</b><br> you could spend that on food")
+  createDiv(real_cost, balance,'#E5D300', '20%', '80%', "Your balance will only be <b>$" + remaining_balance + "</b><br> you could spend that on food. You're broke")
   createDiv(real_cost, balance, '#f32f3e', '75%', '60%', "Just think what else you could buy instead of a stupid" + productTitle)
 });
